@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configurations>
+	<operadores>
+		<item>
+			<name>Teste</name>
+			<code>TST</code>
+		</item>
+	</operadores>
+	<operador-ativo>TST</operador-ativo>
+	<coleta>
+		<path>./</path>
+		<quebra-de-linha>true</quebra-de-linha>
+		<recuo-de-linha>true</recuo-de-linha>
+	</coleta>
+	<no-read>
+		<code>No read</code>
+		<quebra-de-linha>true</quebra-de-linha>
+		<recuo-de-linha>true</recuo-de-linha>
+	</no-read>
+	<solenoide>
+		<code>S12</code>
+		<quebra-de-linha>true</quebra-de-linha>
+		<recuo-de-linha>true</recuo-de-linha>
+	</solenoide>
+</configurations>
