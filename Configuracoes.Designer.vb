@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Configuracoes
     Inherits System.Windows.Forms.Form
 
@@ -32,7 +32,7 @@ Partial Class Configuracoes
         Me.CheckBoxSolenoideQuebraDeLinha = New System.Windows.Forms.CheckBox()
         Me.TextBoxSolenoideCode = New System.Windows.Forms.TextBox()
         Me.LabelSolenoideCodeRef = New System.Windows.Forms.Label()
-        Me.ButtonConfiguracoes = New System.Windows.Forms.Button()
+        Me.ButtonConfiguracoesDeFabrica = New System.Windows.Forms.Button()
         Me.ButtonSalvar = New System.Windows.Forms.Button()
         Me.ButtonInicio = New System.Windows.Forms.Button()
         Me.GroupBoxColeta = New System.Windows.Forms.GroupBox()
@@ -41,9 +41,9 @@ Partial Class Configuracoes
         Me.CheckBoxColetaRecuoDeLinha = New System.Windows.Forms.CheckBox()
         Me.CheckBoxColetaQuebraDeLinha = New System.Windows.Forms.CheckBox()
         Me.GroupBoxOperador = New System.Windows.Forms.GroupBox()
+        Me.ComboBoxPorta = New System.Windows.Forms.ComboBox()
         Me.ButtonOperadorExcluir = New System.Windows.Forms.Button()
         Me.ButtonOperadorAdicionar = New System.Windows.Forms.Button()
-        Me.LabelOperadorDados = New System.Windows.Forms.Label()
         Me.ComboBoxOperador = New System.Windows.Forms.ComboBox()
         Me.GroupBoxNoRead.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -155,18 +155,18 @@ Partial Class Configuracoes
         Me.LabelSolenoideCodeRef.TabIndex = 0
         Me.LabelSolenoideCodeRef.Text = "Code:"
         '
-        'ButtonConfiguracoes
+        'ButtonConfiguracoesDeFabrica
         '
-        Me.ButtonConfiguracoes.BackColor = System.Drawing.Color.LightCoral
-        Me.ButtonConfiguracoes.FlatAppearance.BorderSize = 0
-        Me.ButtonConfiguracoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonConfiguracoes.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonConfiguracoes.Location = New System.Drawing.Point(539, 12)
-        Me.ButtonConfiguracoes.Name = "ButtonConfiguracoes"
-        Me.ButtonConfiguracoes.Size = New System.Drawing.Size(258, 91)
-        Me.ButtonConfiguracoes.TabIndex = 8
-        Me.ButtonConfiguracoes.Text = "Configurações de Fábrica"
-        Me.ButtonConfiguracoes.UseVisualStyleBackColor = False
+        Me.ButtonConfiguracoesDeFabrica.BackColor = System.Drawing.Color.LightCoral
+        Me.ButtonConfiguracoesDeFabrica.FlatAppearance.BorderSize = 0
+        Me.ButtonConfiguracoesDeFabrica.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonConfiguracoesDeFabrica.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonConfiguracoesDeFabrica.Location = New System.Drawing.Point(539, 12)
+        Me.ButtonConfiguracoesDeFabrica.Name = "ButtonConfiguracoesDeFabrica"
+        Me.ButtonConfiguracoesDeFabrica.Size = New System.Drawing.Size(258, 91)
+        Me.ButtonConfiguracoesDeFabrica.TabIndex = 8
+        Me.ButtonConfiguracoesDeFabrica.Text = "Configurações de Fábrica"
+        Me.ButtonConfiguracoesDeFabrica.UseVisualStyleBackColor = False
         '
         'ButtonSalvar
         '
@@ -248,9 +248,9 @@ Partial Class Configuracoes
         'GroupBoxOperador
         '
         Me.GroupBoxOperador.BackColor = System.Drawing.Color.White
+        Me.GroupBoxOperador.Controls.Add(Me.ComboBoxPorta)
         Me.GroupBoxOperador.Controls.Add(Me.ButtonOperadorExcluir)
         Me.GroupBoxOperador.Controls.Add(Me.ButtonOperadorAdicionar)
-        Me.GroupBoxOperador.Controls.Add(Me.LabelOperadorDados)
         Me.GroupBoxOperador.Controls.Add(Me.ComboBoxOperador)
         Me.GroupBoxOperador.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.GroupBoxOperador.Location = New System.Drawing.Point(11, 109)
@@ -260,13 +260,24 @@ Partial Class Configuracoes
         Me.GroupBoxOperador.TabStop = False
         Me.GroupBoxOperador.Text = "Operador"
         '
+        'ComboBoxPorta
+        '
+        Me.ComboBoxPorta.DisplayMember = "Selecione o Operador"
+        Me.ComboBoxPorta.FormattingEnabled = True
+        Me.ComboBoxPorta.Items.AddRange(New Object() {"Selecione o Operador"})
+        Me.ComboBoxPorta.Location = New System.Drawing.Point(13, 109)
+        Me.ComboBoxPorta.Name = "ComboBoxPorta"
+        Me.ComboBoxPorta.Size = New System.Drawing.Size(373, 36)
+        Me.ComboBoxPorta.TabIndex = 10
+        Me.ComboBoxPorta.Text = "Selecione a Porta"
+        '
         'ButtonOperadorExcluir
         '
         Me.ButtonOperadorExcluir.BackColor = System.Drawing.Color.LightCoral
         Me.ButtonOperadorExcluir.FlatAppearance.BorderSize = 0
         Me.ButtonOperadorExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonOperadorExcluir.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonOperadorExcluir.Location = New System.Drawing.Point(215, 75)
+        Me.ButtonOperadorExcluir.Location = New System.Drawing.Point(215, 73)
         Me.ButtonOperadorExcluir.Name = "ButtonOperadorExcluir"
         Me.ButtonOperadorExcluir.Size = New System.Drawing.Size(171, 32)
         Me.ButtonOperadorExcluir.TabIndex = 9
@@ -279,21 +290,12 @@ Partial Class Configuracoes
         Me.ButtonOperadorAdicionar.FlatAppearance.BorderSize = 0
         Me.ButtonOperadorAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonOperadorAdicionar.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonOperadorAdicionar.Location = New System.Drawing.Point(13, 75)
+        Me.ButtonOperadorAdicionar.Location = New System.Drawing.Point(13, 73)
         Me.ButtonOperadorAdicionar.Name = "ButtonOperadorAdicionar"
         Me.ButtonOperadorAdicionar.Size = New System.Drawing.Size(196, 32)
         Me.ButtonOperadorAdicionar.TabIndex = 9
         Me.ButtonOperadorAdicionar.Text = "Adicionar"
         Me.ButtonOperadorAdicionar.UseVisualStyleBackColor = False
-        '
-        'LabelOperadorDados
-        '
-        Me.LabelOperadorDados.Location = New System.Drawing.Point(1, 113)
-        Me.LabelOperadorDados.Name = "LabelOperadorDados"
-        Me.LabelOperadorDados.Size = New System.Drawing.Size(373, 32)
-        Me.LabelOperadorDados.TabIndex = 1
-        Me.LabelOperadorDados.Text = "Nenhum Operador No Momento"
-        Me.LabelOperadorDados.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ComboBoxOperador
         '
@@ -308,17 +310,23 @@ Partial Class Configuracoes
         '
         'Configuracoes
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(810, 436)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
+        Me.ClientSize = New System.Drawing.Size(809, 436)
+        Me.ControlBox = False
         Me.Controls.Add(Me.GroupBoxOperador)
         Me.Controls.Add(Me.GroupBoxColeta)
-        Me.Controls.Add(Me.ButtonConfiguracoes)
+        Me.Controls.Add(Me.ButtonConfiguracoesDeFabrica)
         Me.Controls.Add(Me.ButtonSalvar)
         Me.Controls.Add(Me.ButtonInicio)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBoxNoRead)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(825, 475)
+        Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(825, 475)
         Me.Name = "Configuracoes"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.Text = "Configurações"
         Me.GroupBoxNoRead.ResumeLayout(False)
         Me.GroupBoxNoRead.PerformLayout()
@@ -341,24 +349,174 @@ Partial Class Configuracoes
     Friend WithEvents CheckBoxSolenoideQuebraDeLinha As CheckBox
     Friend WithEvents TextBoxSolenoideCode As TextBox
     Friend WithEvents LabelSolenoideCodeRef As Label
-    Friend WithEvents ButtonConfiguracoes As Button
+    Friend WithEvents ButtonConfiguracoesDeFabrica As Button
     Friend WithEvents ButtonSalvar As Button
     Friend WithEvents ButtonInicio As Button
     Friend WithEvents GroupBoxColeta As GroupBox
     Friend WithEvents CheckBoxColetaRecuoDeLinha As CheckBox
     Friend WithEvents CheckBoxColetaQuebraDeLinha As CheckBox
     Friend WithEvents GroupBoxOperador As GroupBox
-    Friend WithEvents LabelOperadorDados As Label
     Friend WithEvents ComboBoxOperador As ComboBox
     Friend WithEvents LabelColetaPathRef As Label
     Friend WithEvents TextBoxColetaPath As TextBox
     Friend WithEvents ButtonOperadorExcluir As Button
     Friend WithEvents ButtonOperadorAdicionar As Button
+    Friend WithEvents ComboBoxPorta As ComboBox
+
+    Dim ConfigurationData As ConfigurationData
+    Dim SerialController As SerialController
 
     Private Sub Configuracoes_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        Dim configurationFile As XDocument
-        configurationFile = XDocument.Load(Me.GetType().Assembly.GetManifestResourceStream("M2WSorter.Configurations.xml"))
+        ConfigurationData = New ConfigurationData()
+        LoadDataToWindow()
+    End Sub
 
+    Private Sub ButtonSalvar_Click(sender As Object, e As EventArgs) Handles ButtonSalvar.Click
+        SendDataToConfigurations()
+        ConfigurationData.SaveConfigurations()
+    End Sub
 
+    Private Sub ButtonConfiguracoes_Click(sender As Object, e As EventArgs) Handles ButtonConfiguracoesDeFabrica.Click
+        ConfigurationData.DefaultFactorConfiguration()
+        LoadDataToWindow()
+    End Sub
+
+    Private Sub LoadDataToWindow()
+        getDefinedUser()
+        getPorta()
+        getColeta()
+        getSolenoide()
+        getNoRead()
+    End Sub
+
+    Private Sub getDefinedUser()
+        Dim i As Integer
+        ComboBoxOperador.Items.Clear()
+        For i = 0 To ConfigurationData.fileData.configuration.users.Length - 1
+            ComboBoxOperador.Items.Insert(i, ConfigurationData.fileData.configuration.users(i).code + " - " + ConfigurationData.fileData.configuration.users(i).name)
+            If ConfigurationData.fileData.configuration.users(i).code = ConfigurationData.fileData.configuration.definedUser.code Then
+                ComboBoxOperador.SelectedIndex = i
+            End If
+        Next
+        If ComboBoxOperador.Text = "" Then
+            ComboBoxOperador.Text = "Selecione o Operador"
+        End If
+    End Sub
+
+    Private Sub getColeta()
+        TextBoxColetaPath.Text = ConfigurationData.fileData.configuration.coleta.path
+        CheckBoxColetaQuebraDeLinha.Checked = ConfigurationData.fileData.configuration.coleta.useLF
+        CheckBoxColetaRecuoDeLinha.Checked = ConfigurationData.fileData.configuration.coleta.useCF
+    End Sub
+
+    Private Sub getSolenoide()
+        TextBoxSolenoideCode.Text = ConfigurationData.fileData.configuration.solenoide.code
+        CheckBoxSolenoideQuebraDeLinha.Checked = ConfigurationData.fileData.configuration.solenoide.useLF
+        CheckBoxSolenoideRecuoDeLinha.Checked = ConfigurationData.fileData.configuration.solenoide.useCF
+    End Sub
+
+    Private Sub getNoRead()
+        TextBoxNoReadCode.Text = ConfigurationData.fileData.configuration.noread.code
+        CheckBoxNoReadQuebraDeLinha.Checked = ConfigurationData.fileData.configuration.noread.useLF
+        CheckBoxNoReadRecuoDeLinha.Checked = ConfigurationData.fileData.configuration.noread.useCF
+    End Sub
+
+    Private Sub SendDataToConfigurations()
+        setColeta()
+        setSolenoide()
+        setNoRead()
+    End Sub
+
+    Private Sub setColeta()
+        ConfigurationData.SetColeta(TextBoxColetaPath.Text, CheckBoxColetaQuebraDeLinha.Checked, CheckBoxColetaRecuoDeLinha.Checked)
+    End Sub
+
+    Private Sub setSolenoide()
+        ConfigurationData.SetSolenoide(TextBoxSolenoideCode.Text, CheckBoxSolenoideQuebraDeLinha.Checked, CheckBoxSolenoideRecuoDeLinha.Checked)
+    End Sub
+
+    Private Sub setNoRead()
+        ConfigurationData.SetNoRead(TextBoxNoReadCode.Text, CheckBoxNoReadQuebraDeLinha.Checked, CheckBoxNoReadRecuoDeLinha.Checked)
+    End Sub
+
+    Private Sub ButtonOperadorAdicionar_Click(sender As Object, e As EventArgs) Handles ButtonOperadorAdicionar.Click
+        Dim userName As String
+        Dim userCode As String
+
+        userName = InputBox("Qual o nome do NOVO Operdaor?", "Adicionar", "")
+        If userName = "" Then
+            MsgBox("Operação Abortada!", 0, "Aviso")
+            Exit Sub
+        End If
+
+        userCode = InputBox("Qual o código do NOVO Operdaor?", "Adicionar", "")
+        If userCode = "" Then
+            MsgBox("Operação Abortada!", 0, "Aviso")
+            Exit Sub
+        End If
+
+        If ConfigurationData.AddUser(userCode, userName) = -1 Then
+            MsgBox("Usuario Adicionado!!", 0, "Sucesso")
+            getDefinedUser()
+        End If
+
+    End Sub
+
+    Private Sub ButtonOperadorExcluir_Click(sender As Object, e As EventArgs) Handles ButtonOperadorExcluir.Click
+        Dim userName As String
+        Dim userCode As String
+        Dim palavras() As String
+
+        palavras = ComboBoxOperador.Text.Split(" - ")
+        userName = palavras(1)
+        userCode = palavras(0)
+
+        If ConfigurationData.DelUser(userCode) = -1 Then
+            MsgBox("Usuario Inexistente!!", 0, "Erro")
+        Else
+            MsgBox("Usuario Excluido!!", 0, "Sucesso")
+            getDefinedUser()
+        End If
+    End Sub
+
+    Private Sub ComboBoxOperador_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxOperador.SelectedIndexChanged
+        setDefinedUser()
+    End Sub
+
+    Private Sub setDefinedUser()
+        Dim userName As String
+        Dim userCode As String
+        Dim palavras() As String
+
+        palavras = ComboBoxOperador.Text.Split(" - ")
+        If (palavras.Length > 1) Then
+            userName = palavras(1)
+            userCode = palavras(0)
+
+            ConfigurationData.SetDefinedUser(userCode, userName)
+        End If
+    End Sub
+
+    Private Sub ButtonInicio_Click(sender As Object, e As EventArgs) Handles ButtonInicio.Click
+        Me.Close()
+    End Sub
+
+    Private Sub Configuracoes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        SerialController = New SerialController()
+        Dim lista() As String
+        lista = SerialController.ListSerialPorts()
+        Dim Port As String
+
+        For Each Port In lista
+            ComboBoxPorta.Items.Add(Port)
+        Next Port
+    End Sub
+
+    Private Sub getPorta()
+        ComboBoxPorta.Text = ConfigurationData.fileData.configuration.porta
+    End Sub
+
+    Private Sub ComboBoxPorta_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxPorta.SelectedIndexChanged
+        ConfigurationData.SetPorta(ComboBoxPorta.Text)
     End Sub
 End Class

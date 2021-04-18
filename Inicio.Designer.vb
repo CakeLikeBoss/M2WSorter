@@ -22,8 +22,9 @@ Partial Class FormInicio
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.ButtonCarregarArquivo = New System.Windows.Forms.Button()
-        Me.ButtonEnviarRelatório = New System.Windows.Forms.Button()
+        Me.ButtonEnviarRelatorio = New System.Windows.Forms.Button()
         Me.ButtonConfiguracoes = New System.Windows.Forms.Button()
         Me.ButtonIniciar = New System.Windows.Forms.Button()
         Me.ButtonParar = New System.Windows.Forms.Button()
@@ -40,7 +41,7 @@ Partial Class FormInicio
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.LabelQtdErro = New System.Windows.Forms.Label()
         Me.LabelQtdErroRef = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.LabelColetaInfo = New System.Windows.Forms.Label()
         Me.LabelQtdDuplicadosColeta = New System.Windows.Forms.Label()
         Me.LabelQtdFila = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -50,6 +51,9 @@ Partial Class FormInicio
         Me.LabelOperadorRef = New System.Windows.Forms.Label()
         Me.GroupBoxProgressoDaColeta = New System.Windows.Forms.GroupBox()
         Me.ProgressBarProgressoDaColeta = New System.Windows.Forms.ProgressBar()
+        Me.BackgroundWorkerSerialListener = New System.ComponentModel.BackgroundWorker()
+        Me.TimerVerificarOperador = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerControleDeOperacao = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBoxDadosDoArquivo.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBoxProgressoDaColeta.SuspendLayout()
@@ -68,18 +72,18 @@ Partial Class FormInicio
         Me.ButtonCarregarArquivo.Text = "Carregar Arquivo"
         Me.ButtonCarregarArquivo.UseVisualStyleBackColor = False
         '
-        'ButtonEnviarRelatório
+        'ButtonEnviarRelatorio
         '
-        Me.ButtonEnviarRelatório.BackColor = System.Drawing.Color.LemonChiffon
-        Me.ButtonEnviarRelatório.FlatAppearance.BorderSize = 0
-        Me.ButtonEnviarRelatório.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonEnviarRelatório.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonEnviarRelatório.Location = New System.Drawing.Point(276, 12)
-        Me.ButtonEnviarRelatório.Name = "ButtonEnviarRelatório"
-        Me.ButtonEnviarRelatório.Size = New System.Drawing.Size(258, 91)
-        Me.ButtonEnviarRelatório.TabIndex = 1
-        Me.ButtonEnviarRelatório.Text = "Enviar Relatório"
-        Me.ButtonEnviarRelatório.UseVisualStyleBackColor = False
+        Me.ButtonEnviarRelatorio.BackColor = System.Drawing.Color.LemonChiffon
+        Me.ButtonEnviarRelatorio.FlatAppearance.BorderSize = 0
+        Me.ButtonEnviarRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonEnviarRelatorio.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonEnviarRelatorio.Location = New System.Drawing.Point(276, 12)
+        Me.ButtonEnviarRelatorio.Name = "ButtonEnviarRelatorio"
+        Me.ButtonEnviarRelatorio.Size = New System.Drawing.Size(258, 91)
+        Me.ButtonEnviarRelatorio.TabIndex = 1
+        Me.ButtonEnviarRelatorio.Text = "Enviar Relatório"
+        Me.ButtonEnviarRelatorio.UseVisualStyleBackColor = False
         '
         'ButtonConfiguracoes
         '
@@ -237,7 +241,7 @@ Partial Class FormInicio
         Me.GroupBox1.BackColor = System.Drawing.Color.White
         Me.GroupBox1.Controls.Add(Me.LabelQtdErro)
         Me.GroupBox1.Controls.Add(Me.LabelQtdErroRef)
-        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.LabelColetaInfo)
         Me.GroupBox1.Controls.Add(Me.LabelQtdDuplicadosColeta)
         Me.GroupBox1.Controls.Add(Me.LabelQtdFila)
         Me.GroupBox1.Controls.Add(Me.Label5)
@@ -273,15 +277,15 @@ Partial Class FormInicio
         Me.LabelQtdErroRef.TabIndex = 15
         Me.LabelQtdErroRef.Text = "Qtd. Erro:"
         '
-        'Label1
+        'LabelColetaInfo
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(62, 86)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(356, 28)
-        Me.Label1.TabIndex = 14
-        Me.Label1.Text = "Aguardando Carregamento do Arquivo"
+        Me.LabelColetaInfo.AutoSize = True
+        Me.LabelColetaInfo.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelColetaInfo.Location = New System.Drawing.Point(62, 86)
+        Me.LabelColetaInfo.Name = "LabelColetaInfo"
+        Me.LabelColetaInfo.Size = New System.Drawing.Size(356, 28)
+        Me.LabelColetaInfo.TabIndex = 14
+        Me.LabelColetaInfo.Text = "Aguardando Carregamento do Arquivo"
         '
         'LabelQtdDuplicadosColeta
         '
@@ -358,9 +362,9 @@ Partial Class FormInicio
         Me.GroupBoxProgressoDaColeta.BackColor = System.Drawing.Color.White
         Me.GroupBoxProgressoDaColeta.Controls.Add(Me.ProgressBarProgressoDaColeta)
         Me.GroupBoxProgressoDaColeta.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBoxProgressoDaColeta.Location = New System.Drawing.Point(19, 466)
+        Me.GroupBoxProgressoDaColeta.Location = New System.Drawing.Point(13, 466)
         Me.GroupBoxProgressoDaColeta.Name = "GroupBoxProgressoDaColeta"
-        Me.GroupBoxProgressoDaColeta.Size = New System.Drawing.Size(780, 70)
+        Me.GroupBoxProgressoDaColeta.Size = New System.Drawing.Size(786, 70)
         Me.GroupBoxProgressoDaColeta.TabIndex = 16
         Me.GroupBoxProgressoDaColeta.TabStop = False
         Me.GroupBoxProgressoDaColeta.Text = "Progresso da Coleta"
@@ -370,13 +374,30 @@ Partial Class FormInicio
         Me.ProgressBarProgressoDaColeta.Location = New System.Drawing.Point(6, 33)
         Me.ProgressBarProgressoDaColeta.Name = "ProgressBarProgressoDaColeta"
         Me.ProgressBarProgressoDaColeta.Size = New System.Drawing.Size(768, 23)
+        Me.ProgressBarProgressoDaColeta.Step = 1
         Me.ProgressBarProgressoDaColeta.TabIndex = 0
+        '
+        'BackgroundWorkerSerialListener
+        '
+        Me.BackgroundWorkerSerialListener.WorkerReportsProgress = True
+        Me.BackgroundWorkerSerialListener.WorkerSupportsCancellation = True
+        '
+        'TimerVerificarOperador
+        '
+        Me.TimerVerificarOperador.Enabled = True
+        Me.TimerVerificarOperador.Interval = 1000
+        '
+        'TimerControleDeOperacao
+        '
+        Me.TimerControleDeOperacao.Enabled = True
+        Me.TimerControleDeOperacao.Interval = 1000
         '
         'FormInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(820, 550)
+        Me.ClientSize = New System.Drawing.Size(809, 541)
+        Me.ControlBox = False
         Me.Controls.Add(Me.GroupBoxProgressoDaColeta)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBoxDadosDoArquivo)
@@ -384,8 +405,11 @@ Partial Class FormInicio
         Me.Controls.Add(Me.ButtonParar)
         Me.Controls.Add(Me.ButtonIniciar)
         Me.Controls.Add(Me.ButtonConfiguracoes)
-        Me.Controls.Add(Me.ButtonEnviarRelatório)
+        Me.Controls.Add(Me.ButtonEnviarRelatorio)
         Me.Controls.Add(Me.ButtonCarregarArquivo)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximumSize = New System.Drawing.Size(825, 580)
+        Me.MinimumSize = New System.Drawing.Size(825, 580)
         Me.Name = "FormInicio"
         Me.Text = "Sorter"
         Me.GroupBoxDadosDoArquivo.ResumeLayout(False)
@@ -398,7 +422,7 @@ Partial Class FormInicio
     End Sub
 
     Friend WithEvents ButtonCarregarArquivo As Button
-    Friend WithEvents ButtonEnviarRelatório As Button
+    Friend WithEvents ButtonEnviarRelatorio As Button
     Friend WithEvents ButtonConfiguracoes As Button
     Friend WithEvents ButtonIniciar As Button
     Friend WithEvents ButtonParar As Button
@@ -415,7 +439,7 @@ Partial Class FormInicio
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents LabelQtdErro As Label
     Friend WithEvents LabelQtdErroRef As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents LabelColetaInfo As Label
     Friend WithEvents LabelQtdDuplicadosColeta As Label
     Friend WithEvents LabelQtdFila As Label
     Friend WithEvents Label5 As Label
@@ -425,4 +449,7 @@ Partial Class FormInicio
     Friend WithEvents LabelOperadorRef As Label
     Friend WithEvents GroupBoxProgressoDaColeta As GroupBox
     Friend WithEvents ProgressBarProgressoDaColeta As ProgressBar
+    Friend WithEvents BackgroundWorkerSerialListener As System.ComponentModel.BackgroundWorker
+    Friend WithEvents TimerVerificarOperador As Timer
+    Friend WithEvents TimerControleDeOperacao As Timer
 End Class
