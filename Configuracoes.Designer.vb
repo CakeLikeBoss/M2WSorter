@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Configuracoes
     Inherits System.Windows.Forms.Form
 
     'Descartar substituições de formulário para limpar a lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Configuracoes
     'OBSERVAÇÃO: o procedimento a seguir é exigido pelo Windows Form Designer
     'Pode ser modificado usando o Windows Form Designer.  
     'Não o modifique usando o editor de códigos.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.LabelNoReadCodeRef = New System.Windows.Forms.Label()
         Me.GroupBoxNoRead = New System.Windows.Forms.GroupBox()
@@ -222,6 +222,7 @@ Partial Class Configuracoes
         '
         Me.TextBoxColetaPath.Location = New System.Drawing.Point(68, 33)
         Me.TextBoxColetaPath.Name = "TextBoxColetaPath"
+        Me.TextBoxColetaPath.ReadOnly = True
         Me.TextBoxColetaPath.Size = New System.Drawing.Size(309, 34)
         Me.TextBoxColetaPath.TabIndex = 5
         '
@@ -363,9 +364,6 @@ Partial Class Configuracoes
     Friend WithEvents ButtonOperadorAdicionar As Button
     Friend WithEvents ComboBoxPorta As ComboBox
 
-    Dim ConfigurationData As ConfigurationData
-    Dim SerialController As SerialController
-
     Private Sub Configuracoes_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         ConfigurationData = New ConfigurationData()
         LoadDataToWindow()
@@ -389,6 +387,9 @@ Partial Class Configuracoes
         getNoRead()
     End Sub
 
+
+    Dim ConfigurationData As ConfigurationData
+    Dim SerialController As SerialController
     Private Sub getDefinedUser()
         Dim i As Integer
         ComboBoxOperador.Items.Clear()

@@ -52,7 +52,20 @@ Public Class CSVManager
         Dim Index As Integer
         Index = Array.IndexOf(colCodigo, Key)
         If Index <> -1 Then
-            colError(Index) = "No Error"
+            colError(Index) = "Automatic"
+            colOperadorName(Index) = Name
+            colOperadorCode(Index) = Code
+            colDate(Index) = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+        End If
+
+        Return Index
+    End Function
+
+    Public Function searchFileToManualRead(Key As String, Name As String, Code As String) As Integer
+        Dim Index As Integer
+        Index = Array.IndexOf(colCodigo, Key)
+        If Index <> -1 Then
+            colError(Index) = "Automatic"
             colOperadorName(Index) = Name
             colOperadorCode(Index) = Code
             colDate(Index) = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
