@@ -14,9 +14,9 @@ Public Class FormInicio
     Dim qtdErro As Integer
     Dim totalRealizado As Integer
 
-    Dim ConfigurationData As ConfigurationData
+    Public Shared ConfigurationData As ConfigurationData
     Dim SerialController As SerialController
-    Dim csvManager As CSVManager
+    Public Shared csvManager As CSVManager
     Private Sub ButtonSair_Click(sender As Object, e As EventArgs) Handles ButtonSair.Click
         Close()
     End Sub
@@ -172,5 +172,10 @@ Public Class FormInicio
         fileToExport = ConfigurationData.fileData.configuration.coleta.path + "Coleta_" + System.DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv"
         csvManager.finishFileToRead(ConfigurationData.fileData.configuration.definedUser.name, ConfigurationData.fileData.configuration.definedUser.code, fileToExport)
         MessageBox.Show("Arquivo Enviado!")
+    End Sub
+
+    Private Sub ButtonColetaManual_Click(sender As Object, e As EventArgs) Handles ButtonColetaManual.Click
+        Dim formColetaManual = New ColetaManual()
+        formColetaManual.Show()
     End Sub
 End Class

@@ -29,7 +29,6 @@ Partial Class FormInicio
         Me.ButtonIniciar = New System.Windows.Forms.Button()
         Me.ButtonParar = New System.Windows.Forms.Button()
         Me.ButtonSair = New System.Windows.Forms.Button()
-        Me.LabelNomeArquivoRef = New System.Windows.Forms.Label()
         Me.GroupBoxDadosDoArquivo = New System.Windows.Forms.GroupBox()
         Me.LabelInfo = New System.Windows.Forms.Label()
         Me.LabelQtdDuplicadosArquivo = New System.Windows.Forms.Label()
@@ -54,6 +53,7 @@ Partial Class FormInicio
         Me.BackgroundWorkerSerialListener = New System.ComponentModel.BackgroundWorker()
         Me.TimerVerificarOperador = New System.Windows.Forms.Timer(Me.components)
         Me.TimerControleDeOperacao = New System.Windows.Forms.Timer(Me.components)
+        Me.ButtonColetaManual = New System.Windows.Forms.Button()
         Me.GroupBoxDadosDoArquivo.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBoxProgressoDaColeta.SuspendLayout()
@@ -64,10 +64,10 @@ Partial Class FormInicio
         Me.ButtonCarregarArquivo.BackColor = System.Drawing.Color.LightSteelBlue
         Me.ButtonCarregarArquivo.FlatAppearance.BorderSize = 0
         Me.ButtonCarregarArquivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonCarregarArquivo.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonCarregarArquivo.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.ButtonCarregarArquivo.Location = New System.Drawing.Point(12, 12)
         Me.ButtonCarregarArquivo.Name = "ButtonCarregarArquivo"
-        Me.ButtonCarregarArquivo.Size = New System.Drawing.Size(258, 91)
+        Me.ButtonCarregarArquivo.Size = New System.Drawing.Size(350, 120)
         Me.ButtonCarregarArquivo.TabIndex = 0
         Me.ButtonCarregarArquivo.Text = "Carregar Arquivo"
         Me.ButtonCarregarArquivo.UseVisualStyleBackColor = False
@@ -77,10 +77,10 @@ Partial Class FormInicio
         Me.ButtonEnviarRelatorio.BackColor = System.Drawing.Color.LemonChiffon
         Me.ButtonEnviarRelatorio.FlatAppearance.BorderSize = 0
         Me.ButtonEnviarRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonEnviarRelatorio.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonEnviarRelatorio.Location = New System.Drawing.Point(276, 12)
+        Me.ButtonEnviarRelatorio.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonEnviarRelatorio.Location = New System.Drawing.Point(368, 12)
         Me.ButtonEnviarRelatorio.Name = "ButtonEnviarRelatorio"
-        Me.ButtonEnviarRelatorio.Size = New System.Drawing.Size(258, 91)
+        Me.ButtonEnviarRelatorio.Size = New System.Drawing.Size(350, 120)
         Me.ButtonEnviarRelatorio.TabIndex = 1
         Me.ButtonEnviarRelatorio.Text = "Enviar Relatório"
         Me.ButtonEnviarRelatorio.UseVisualStyleBackColor = False
@@ -90,10 +90,10 @@ Partial Class FormInicio
         Me.ButtonConfiguracoes.BackColor = System.Drawing.Color.LightGray
         Me.ButtonConfiguracoes.FlatAppearance.BorderSize = 0
         Me.ButtonConfiguracoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonConfiguracoes.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonConfiguracoes.Location = New System.Drawing.Point(540, 12)
+        Me.ButtonConfiguracoes.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonConfiguracoes.Location = New System.Drawing.Point(724, 12)
         Me.ButtonConfiguracoes.Name = "ButtonConfiguracoes"
-        Me.ButtonConfiguracoes.Size = New System.Drawing.Size(258, 91)
+        Me.ButtonConfiguracoes.Size = New System.Drawing.Size(350, 120)
         Me.ButtonConfiguracoes.TabIndex = 2
         Me.ButtonConfiguracoes.Text = "Configurações"
         Me.ButtonConfiguracoes.UseVisualStyleBackColor = False
@@ -103,10 +103,10 @@ Partial Class FormInicio
         Me.ButtonIniciar.BackColor = System.Drawing.Color.PaleGreen
         Me.ButtonIniciar.FlatAppearance.BorderSize = 0
         Me.ButtonIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonIniciar.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonIniciar.Location = New System.Drawing.Point(12, 109)
+        Me.ButtonIniciar.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonIniciar.Location = New System.Drawing.Point(12, 138)
         Me.ButtonIniciar.Name = "ButtonIniciar"
-        Me.ButtonIniciar.Size = New System.Drawing.Size(258, 91)
+        Me.ButtonIniciar.Size = New System.Drawing.Size(350, 120)
         Me.ButtonIniciar.TabIndex = 3
         Me.ButtonIniciar.Text = "Iniciar"
         Me.ButtonIniciar.UseVisualStyleBackColor = False
@@ -116,10 +116,10 @@ Partial Class FormInicio
         Me.ButtonParar.BackColor = System.Drawing.Color.Gold
         Me.ButtonParar.FlatAppearance.BorderSize = 0
         Me.ButtonParar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonParar.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonParar.Location = New System.Drawing.Point(276, 109)
+        Me.ButtonParar.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonParar.Location = New System.Drawing.Point(12, 264)
         Me.ButtonParar.Name = "ButtonParar"
-        Me.ButtonParar.Size = New System.Drawing.Size(258, 91)
+        Me.ButtonParar.Size = New System.Drawing.Size(350, 120)
         Me.ButtonParar.TabIndex = 4
         Me.ButtonParar.Text = "Parar"
         Me.ButtonParar.UseVisualStyleBackColor = False
@@ -129,23 +129,13 @@ Partial Class FormInicio
         Me.ButtonSair.BackColor = System.Drawing.Color.Coral
         Me.ButtonSair.FlatAppearance.BorderSize = 0
         Me.ButtonSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonSair.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonSair.Location = New System.Drawing.Point(541, 109)
+        Me.ButtonSair.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonSair.Location = New System.Drawing.Point(1080, 12)
         Me.ButtonSair.Name = "ButtonSair"
-        Me.ButtonSair.Size = New System.Drawing.Size(258, 91)
+        Me.ButtonSair.Size = New System.Drawing.Size(350, 120)
         Me.ButtonSair.TabIndex = 5
         Me.ButtonSair.Text = "Sair"
         Me.ButtonSair.UseVisualStyleBackColor = False
-        '
-        'LabelNomeArquivoRef
-        '
-        Me.LabelNomeArquivoRef.AutoSize = True
-        Me.LabelNomeArquivoRef.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelNomeArquivoRef.Location = New System.Drawing.Point(6, 30)
-        Me.LabelNomeArquivoRef.Name = "LabelNomeArquivoRef"
-        Me.LabelNomeArquivoRef.Size = New System.Drawing.Size(70, 28)
-        Me.LabelNomeArquivoRef.TabIndex = 6
-        Me.LabelNomeArquivoRef.Text = "Nome:"
         '
         'GroupBoxDadosDoArquivo
         '
@@ -157,11 +147,10 @@ Partial Class FormInicio
         Me.GroupBoxDadosDoArquivo.Controls.Add(Me.LabelNomeArquivo)
         Me.GroupBoxDadosDoArquivo.Controls.Add(Me.LabelQtdRegistrosRef)
         Me.GroupBoxDadosDoArquivo.Controls.Add(Me.LabelQtdDuplicadosArquivoRef)
-        Me.GroupBoxDadosDoArquivo.Controls.Add(Me.LabelNomeArquivoRef)
-        Me.GroupBoxDadosDoArquivo.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBoxDadosDoArquivo.Location = New System.Drawing.Point(12, 206)
+        Me.GroupBoxDadosDoArquivo.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.GroupBoxDadosDoArquivo.Location = New System.Drawing.Point(368, 138)
         Me.GroupBoxDadosDoArquivo.Name = "GroupBoxDadosDoArquivo"
-        Me.GroupBoxDadosDoArquivo.Size = New System.Drawing.Size(786, 124)
+        Me.GroupBoxDadosDoArquivo.Size = New System.Drawing.Size(1061, 139)
         Me.GroupBoxDadosDoArquivo.TabIndex = 0
         Me.GroupBoxDadosDoArquivo.TabStop = False
         Me.GroupBoxDadosDoArquivo.Text = "Dados do Arquivo"
@@ -169,70 +158,70 @@ Partial Class FormInicio
         'LabelInfo
         '
         Me.LabelInfo.AutoSize = True
-        Me.LabelInfo.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelInfo.Location = New System.Drawing.Point(62, 86)
+        Me.LabelInfo.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelInfo.Location = New System.Drawing.Point(76, 96)
         Me.LabelInfo.Name = "LabelInfo"
-        Me.LabelInfo.Size = New System.Drawing.Size(356, 28)
+        Me.LabelInfo.Size = New System.Drawing.Size(413, 31)
         Me.LabelInfo.TabIndex = 14
         Me.LabelInfo.Text = "Aguardando Carregamento do Arquivo"
         '
         'LabelQtdDuplicadosArquivo
         '
         Me.LabelQtdDuplicadosArquivo.AutoSize = True
-        Me.LabelQtdDuplicadosArquivo.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdDuplicadosArquivo.Location = New System.Drawing.Point(427, 58)
+        Me.LabelQtdDuplicadosArquivo.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelQtdDuplicadosArquivo.Location = New System.Drawing.Point(623, 65)
         Me.LabelQtdDuplicadosArquivo.Name = "LabelQtdDuplicadosArquivo"
-        Me.LabelQtdDuplicadosArquivo.Size = New System.Drawing.Size(23, 28)
+        Me.LabelQtdDuplicadosArquivo.Size = New System.Drawing.Size(26, 31)
         Me.LabelQtdDuplicadosArquivo.TabIndex = 13
         Me.LabelQtdDuplicadosArquivo.Text = "0"
         '
         'LabelQtdRegistros
         '
         Me.LabelQtdRegistros.AutoSize = True
-        Me.LabelQtdRegistros.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdRegistros.Location = New System.Drawing.Point(151, 58)
+        Me.LabelQtdRegistros.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelQtdRegistros.Location = New System.Drawing.Point(181, 65)
         Me.LabelQtdRegistros.Name = "LabelQtdRegistros"
-        Me.LabelQtdRegistros.Size = New System.Drawing.Size(23, 28)
+        Me.LabelQtdRegistros.Size = New System.Drawing.Size(26, 31)
         Me.LabelQtdRegistros.TabIndex = 12
         Me.LabelQtdRegistros.Text = "0"
         '
         'LabelInfoRef
         '
         Me.LabelInfoRef.AutoSize = True
-        Me.LabelInfoRef.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelInfoRef.Location = New System.Drawing.Point(6, 86)
+        Me.LabelInfoRef.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelInfoRef.Location = New System.Drawing.Point(12, 96)
         Me.LabelInfoRef.Name = "LabelInfoRef"
-        Me.LabelInfoRef.Size = New System.Drawing.Size(50, 28)
+        Me.LabelInfoRef.Size = New System.Drawing.Size(58, 31)
         Me.LabelInfoRef.TabIndex = 11
         Me.LabelInfoRef.Text = "Info:"
         '
         'LabelNomeArquivo
         '
         Me.LabelNomeArquivo.AutoSize = True
-        Me.LabelNomeArquivo.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelNomeArquivo.Location = New System.Drawing.Point(82, 30)
+        Me.LabelNomeArquivo.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelNomeArquivo.Location = New System.Drawing.Point(99, 34)
         Me.LabelNomeArquivo.Name = "LabelNomeArquivo"
-        Me.LabelNomeArquivo.Size = New System.Drawing.Size(245, 28)
+        Me.LabelNomeArquivo.Size = New System.Drawing.Size(282, 31)
         Me.LabelNomeArquivo.TabIndex = 10
         Me.LabelNomeArquivo.Text = "---Aguardando Arquivo---"
         '
         'LabelQtdRegistrosRef
         '
         Me.LabelQtdRegistrosRef.AutoSize = True
-        Me.LabelQtdRegistrosRef.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdRegistrosRef.Location = New System.Drawing.Point(6, 58)
+        Me.LabelQtdRegistrosRef.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelQtdRegistrosRef.Location = New System.Drawing.Point(12, 65)
         Me.LabelQtdRegistrosRef.Name = "LabelQtdRegistrosRef"
-        Me.LabelQtdRegistrosRef.Size = New System.Drawing.Size(139, 28)
+        Me.LabelQtdRegistrosRef.Size = New System.Drawing.Size(163, 31)
         Me.LabelQtdRegistrosRef.TabIndex = 8
         Me.LabelQtdRegistrosRef.Text = "Qtd. Registros:"
         '
         'LabelQtdDuplicadosArquivoRef
         '
         Me.LabelQtdDuplicadosArquivoRef.AutoSize = True
-        Me.LabelQtdDuplicadosArquivoRef.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdDuplicadosArquivoRef.Location = New System.Drawing.Point(264, 58)
+        Me.LabelQtdDuplicadosArquivoRef.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelQtdDuplicadosArquivoRef.Location = New System.Drawing.Point(433, 65)
         Me.LabelQtdDuplicadosArquivoRef.Name = "LabelQtdDuplicadosArquivoRef"
-        Me.LabelQtdDuplicadosArquivoRef.Size = New System.Drawing.Size(157, 28)
+        Me.LabelQtdDuplicadosArquivoRef.Size = New System.Drawing.Size(184, 31)
         Me.LabelQtdDuplicadosArquivoRef.TabIndex = 7
         Me.LabelQtdDuplicadosArquivoRef.Text = "Qtd. Duplicados:"
         '
@@ -249,10 +238,10 @@ Partial Class FormInicio
         Me.GroupBox1.Controls.Add(Me.LabelQtdFilaRef)
         Me.GroupBox1.Controls.Add(Me.LabelQtdDuplicadosColetaRef)
         Me.GroupBox1.Controls.Add(Me.LabelOperadorRef)
-        Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 336)
+        Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.GroupBox1.Location = New System.Drawing.Point(368, 283)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(786, 124)
+        Me.GroupBox1.Size = New System.Drawing.Size(1062, 124)
         Me.GroupBox1.TabIndex = 15
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Dados da Coleta"
@@ -260,100 +249,100 @@ Partial Class FormInicio
         'LabelQtdErro
         '
         Me.LabelQtdErro.AutoSize = True
-        Me.LabelQtdErro.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdErro.Location = New System.Drawing.Point(628, 58)
+        Me.LabelQtdErro.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelQtdErro.Location = New System.Drawing.Point(680, 34)
         Me.LabelQtdErro.Name = "LabelQtdErro"
-        Me.LabelQtdErro.Size = New System.Drawing.Size(23, 28)
+        Me.LabelQtdErro.Size = New System.Drawing.Size(26, 31)
         Me.LabelQtdErro.TabIndex = 16
         Me.LabelQtdErro.Text = "0"
         '
         'LabelQtdErroRef
         '
         Me.LabelQtdErroRef.AutoSize = True
-        Me.LabelQtdErroRef.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdErroRef.Location = New System.Drawing.Point(527, 58)
+        Me.LabelQtdErroRef.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelQtdErroRef.Location = New System.Drawing.Point(576, 61)
         Me.LabelQtdErroRef.Name = "LabelQtdErroRef"
-        Me.LabelQtdErroRef.Size = New System.Drawing.Size(95, 28)
+        Me.LabelQtdErroRef.Size = New System.Drawing.Size(110, 31)
         Me.LabelQtdErroRef.TabIndex = 15
         Me.LabelQtdErroRef.Text = "Qtd. Erro:"
         '
         'LabelColetaInfo
         '
         Me.LabelColetaInfo.AutoSize = True
-        Me.LabelColetaInfo.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelColetaInfo.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabelColetaInfo.Location = New System.Drawing.Point(62, 86)
         Me.LabelColetaInfo.Name = "LabelColetaInfo"
-        Me.LabelColetaInfo.Size = New System.Drawing.Size(356, 28)
+        Me.LabelColetaInfo.Size = New System.Drawing.Size(413, 31)
         Me.LabelColetaInfo.TabIndex = 14
         Me.LabelColetaInfo.Text = "Aguardando Carregamento do Arquivo"
         '
         'LabelQtdDuplicadosColeta
         '
         Me.LabelQtdDuplicadosColeta.AutoSize = True
-        Me.LabelQtdDuplicadosColeta.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdDuplicadosColeta.Location = New System.Drawing.Point(427, 58)
+        Me.LabelQtdDuplicadosColeta.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelQtdDuplicadosColeta.Location = New System.Drawing.Point(456, 61)
         Me.LabelQtdDuplicadosColeta.Name = "LabelQtdDuplicadosColeta"
-        Me.LabelQtdDuplicadosColeta.Size = New System.Drawing.Size(23, 28)
+        Me.LabelQtdDuplicadosColeta.Size = New System.Drawing.Size(26, 31)
         Me.LabelQtdDuplicadosColeta.TabIndex = 13
         Me.LabelQtdDuplicadosColeta.Text = "0"
         '
         'LabelQtdFila
         '
         Me.LabelQtdFila.AutoSize = True
-        Me.LabelQtdFila.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdFila.Location = New System.Drawing.Point(101, 58)
+        Me.LabelQtdFila.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelQtdFila.Location = New System.Drawing.Point(116, 61)
         Me.LabelQtdFila.Name = "LabelQtdFila"
-        Me.LabelQtdFila.Size = New System.Drawing.Size(23, 28)
+        Me.LabelQtdFila.Size = New System.Drawing.Size(26, 31)
         Me.LabelQtdFila.TabIndex = 12
         Me.LabelQtdFila.Text = "0"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Label5.Location = New System.Drawing.Point(6, 86)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(50, 28)
+        Me.Label5.Size = New System.Drawing.Size(58, 31)
         Me.Label5.TabIndex = 11
         Me.Label5.Text = "Info:"
         '
         'LabelOperador
         '
         Me.LabelOperador.AutoSize = True
-        Me.LabelOperador.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelOperador.Location = New System.Drawing.Point(82, 30)
+        Me.LabelOperador.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelOperador.Location = New System.Drawing.Point(93, 27)
         Me.LabelOperador.Name = "LabelOperador"
-        Me.LabelOperador.Size = New System.Drawing.Size(260, 28)
+        Me.LabelOperador.Size = New System.Drawing.Size(300, 31)
         Me.LabelOperador.TabIndex = 10
         Me.LabelOperador.Text = "---Aguardando Operador---"
         '
         'LabelQtdFilaRef
         '
         Me.LabelQtdFilaRef.AutoSize = True
-        Me.LabelQtdFilaRef.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdFilaRef.Location = New System.Drawing.Point(6, 58)
+        Me.LabelQtdFilaRef.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelQtdFilaRef.Location = New System.Drawing.Point(6, 61)
         Me.LabelQtdFilaRef.Name = "LabelQtdFilaRef"
-        Me.LabelQtdFilaRef.Size = New System.Drawing.Size(89, 28)
+        Me.LabelQtdFilaRef.Size = New System.Drawing.Size(104, 31)
         Me.LabelQtdFilaRef.TabIndex = 8
         Me.LabelQtdFilaRef.Text = "Qtd. Fila:"
         '
         'LabelQtdDuplicadosColetaRef
         '
         Me.LabelQtdDuplicadosColetaRef.AutoSize = True
-        Me.LabelQtdDuplicadosColetaRef.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdDuplicadosColetaRef.Location = New System.Drawing.Point(264, 58)
+        Me.LabelQtdDuplicadosColetaRef.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelQtdDuplicadosColetaRef.Location = New System.Drawing.Point(266, 61)
         Me.LabelQtdDuplicadosColetaRef.Name = "LabelQtdDuplicadosColetaRef"
-        Me.LabelQtdDuplicadosColetaRef.Size = New System.Drawing.Size(157, 28)
+        Me.LabelQtdDuplicadosColetaRef.Size = New System.Drawing.Size(184, 31)
         Me.LabelQtdDuplicadosColetaRef.TabIndex = 7
         Me.LabelQtdDuplicadosColetaRef.Text = "Qtd. Duplicados:"
         '
         'LabelOperadorRef
         '
         Me.LabelOperadorRef.AutoSize = True
-        Me.LabelOperadorRef.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabelOperadorRef.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabelOperadorRef.Location = New System.Drawing.Point(6, 30)
         Me.LabelOperadorRef.Name = "LabelOperadorRef"
-        Me.LabelOperadorRef.Size = New System.Drawing.Size(70, 28)
+        Me.LabelOperadorRef.Size = New System.Drawing.Size(81, 31)
         Me.LabelOperadorRef.TabIndex = 6
         Me.LabelOperadorRef.Text = "Nome:"
         '
@@ -361,19 +350,19 @@ Partial Class FormInicio
         '
         Me.GroupBoxProgressoDaColeta.BackColor = System.Drawing.Color.White
         Me.GroupBoxProgressoDaColeta.Controls.Add(Me.ProgressBarProgressoDaColeta)
-        Me.GroupBoxProgressoDaColeta.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBoxProgressoDaColeta.Location = New System.Drawing.Point(13, 466)
+        Me.GroupBoxProgressoDaColeta.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.GroupBoxProgressoDaColeta.Location = New System.Drawing.Point(374, 413)
         Me.GroupBoxProgressoDaColeta.Name = "GroupBoxProgressoDaColeta"
-        Me.GroupBoxProgressoDaColeta.Size = New System.Drawing.Size(786, 70)
+        Me.GroupBoxProgressoDaColeta.Size = New System.Drawing.Size(1056, 97)
         Me.GroupBoxProgressoDaColeta.TabIndex = 16
         Me.GroupBoxProgressoDaColeta.TabStop = False
         Me.GroupBoxProgressoDaColeta.Text = "Progresso da Coleta"
         '
         'ProgressBarProgressoDaColeta
         '
-        Me.ProgressBarProgressoDaColeta.Location = New System.Drawing.Point(6, 33)
+        Me.ProgressBarProgressoDaColeta.Location = New System.Drawing.Point(6, 37)
         Me.ProgressBarProgressoDaColeta.Name = "ProgressBarProgressoDaColeta"
-        Me.ProgressBarProgressoDaColeta.Size = New System.Drawing.Size(768, 23)
+        Me.ProgressBarProgressoDaColeta.Size = New System.Drawing.Size(1044, 44)
         Me.ProgressBarProgressoDaColeta.Step = 1
         Me.ProgressBarProgressoDaColeta.TabIndex = 0
         '
@@ -392,12 +381,26 @@ Partial Class FormInicio
         Me.TimerControleDeOperacao.Enabled = True
         Me.TimerControleDeOperacao.Interval = 1000
         '
+        'ButtonColetaManual
+        '
+        Me.ButtonColetaManual.BackColor = System.Drawing.Color.Turquoise
+        Me.ButtonColetaManual.FlatAppearance.BorderSize = 0
+        Me.ButtonColetaManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonColetaManual.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonColetaManual.Location = New System.Drawing.Point(12, 390)
+        Me.ButtonColetaManual.Name = "ButtonColetaManual"
+        Me.ButtonColetaManual.Size = New System.Drawing.Size(350, 120)
+        Me.ButtonColetaManual.TabIndex = 17
+        Me.ButtonColetaManual.Text = "Coleta Manual"
+        Me.ButtonColetaManual.UseVisualStyleBackColor = False
+        '
         'FormInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(809, 541)
+        Me.ClientSize = New System.Drawing.Size(1441, 522)
         Me.ControlBox = False
+        Me.Controls.Add(Me.ButtonColetaManual)
         Me.Controls.Add(Me.GroupBoxProgressoDaColeta)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBoxDadosDoArquivo)
@@ -408,8 +411,7 @@ Partial Class FormInicio
         Me.Controls.Add(Me.ButtonEnviarRelatorio)
         Me.Controls.Add(Me.ButtonCarregarArquivo)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.MaximumSize = New System.Drawing.Size(825, 580)
-        Me.MinimumSize = New System.Drawing.Size(825, 580)
+        Me.MaximumSize = New System.Drawing.Size(1600, 1200)
         Me.Name = "FormInicio"
         Me.Text = "Sorter"
         Me.GroupBoxDadosDoArquivo.ResumeLayout(False)
@@ -427,7 +429,6 @@ Partial Class FormInicio
     Friend WithEvents ButtonIniciar As Button
     Friend WithEvents ButtonParar As Button
     Friend WithEvents ButtonSair As Button
-    Friend WithEvents LabelNomeArquivoRef As Label
     Friend WithEvents GroupBoxDadosDoArquivo As GroupBox
     Friend WithEvents LabelInfo As Label
     Friend WithEvents LabelQtdDuplicadosArquivo As Label
@@ -452,4 +453,5 @@ Partial Class FormInicio
     Friend WithEvents BackgroundWorkerSerialListener As System.ComponentModel.BackgroundWorker
     Friend WithEvents TimerVerificarOperador As Timer
     Friend WithEvents TimerControleDeOperacao As Timer
+    Friend WithEvents ButtonColetaManual As Button
 End Class
