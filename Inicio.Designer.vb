@@ -24,7 +24,6 @@ Partial Class FormInicio
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.ButtonCarregarArquivo = New System.Windows.Forms.Button()
-        Me.ButtonEnviarRelatorio = New System.Windows.Forms.Button()
         Me.ButtonConfiguracoes = New System.Windows.Forms.Button()
         Me.ButtonIniciar = New System.Windows.Forms.Button()
         Me.ButtonParar = New System.Windows.Forms.Button()
@@ -54,9 +53,13 @@ Partial Class FormInicio
         Me.TimerVerificarOperador = New System.Windows.Forms.Timer(Me.components)
         Me.TimerControleDeOperacao = New System.Windows.Forms.Timer(Me.components)
         Me.ButtonColetaManual = New System.Windows.Forms.Button()
+        Me.ButtonPendentes = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBoxDadosDoArquivo.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBoxProgressoDaColeta.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'ButtonCarregarArquivo
@@ -67,23 +70,10 @@ Partial Class FormInicio
         Me.ButtonCarregarArquivo.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.ButtonCarregarArquivo.Location = New System.Drawing.Point(12, 12)
         Me.ButtonCarregarArquivo.Name = "ButtonCarregarArquivo"
-        Me.ButtonCarregarArquivo.Size = New System.Drawing.Size(350, 120)
+        Me.ButtonCarregarArquivo.Size = New System.Drawing.Size(280, 120)
         Me.ButtonCarregarArquivo.TabIndex = 0
         Me.ButtonCarregarArquivo.Text = "Carregar Arquivo"
         Me.ButtonCarregarArquivo.UseVisualStyleBackColor = False
-        '
-        'ButtonEnviarRelatorio
-        '
-        Me.ButtonEnviarRelatorio.BackColor = System.Drawing.Color.LemonChiffon
-        Me.ButtonEnviarRelatorio.FlatAppearance.BorderSize = 0
-        Me.ButtonEnviarRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonEnviarRelatorio.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonEnviarRelatorio.Location = New System.Drawing.Point(368, 12)
-        Me.ButtonEnviarRelatorio.Name = "ButtonEnviarRelatorio"
-        Me.ButtonEnviarRelatorio.Size = New System.Drawing.Size(350, 120)
-        Me.ButtonEnviarRelatorio.TabIndex = 1
-        Me.ButtonEnviarRelatorio.Text = "Enviar Relatório"
-        Me.ButtonEnviarRelatorio.UseVisualStyleBackColor = False
         '
         'ButtonConfiguracoes
         '
@@ -91,9 +81,9 @@ Partial Class FormInicio
         Me.ButtonConfiguracoes.FlatAppearance.BorderSize = 0
         Me.ButtonConfiguracoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonConfiguracoes.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonConfiguracoes.Location = New System.Drawing.Point(724, 12)
+        Me.ButtonConfiguracoes.Location = New System.Drawing.Point(584, 12)
         Me.ButtonConfiguracoes.Name = "ButtonConfiguracoes"
-        Me.ButtonConfiguracoes.Size = New System.Drawing.Size(350, 120)
+        Me.ButtonConfiguracoes.Size = New System.Drawing.Size(280, 120)
         Me.ButtonConfiguracoes.TabIndex = 2
         Me.ButtonConfiguracoes.Text = "Configurações"
         Me.ButtonConfiguracoes.UseVisualStyleBackColor = False
@@ -101,12 +91,13 @@ Partial Class FormInicio
         'ButtonIniciar
         '
         Me.ButtonIniciar.BackColor = System.Drawing.Color.PaleGreen
+        Me.ButtonIniciar.Enabled = False
         Me.ButtonIniciar.FlatAppearance.BorderSize = 0
         Me.ButtonIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonIniciar.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.ButtonIniciar.Location = New System.Drawing.Point(12, 138)
         Me.ButtonIniciar.Name = "ButtonIniciar"
-        Me.ButtonIniciar.Size = New System.Drawing.Size(350, 120)
+        Me.ButtonIniciar.Size = New System.Drawing.Size(280, 120)
         Me.ButtonIniciar.TabIndex = 3
         Me.ButtonIniciar.Text = "Iniciar"
         Me.ButtonIniciar.UseVisualStyleBackColor = False
@@ -114,12 +105,13 @@ Partial Class FormInicio
         'ButtonParar
         '
         Me.ButtonParar.BackColor = System.Drawing.Color.Gold
+        Me.ButtonParar.Enabled = False
         Me.ButtonParar.FlatAppearance.BorderSize = 0
         Me.ButtonParar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonParar.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.ButtonParar.Location = New System.Drawing.Point(12, 264)
         Me.ButtonParar.Name = "ButtonParar"
-        Me.ButtonParar.Size = New System.Drawing.Size(350, 120)
+        Me.ButtonParar.Size = New System.Drawing.Size(280, 120)
         Me.ButtonParar.TabIndex = 4
         Me.ButtonParar.Text = "Parar"
         Me.ButtonParar.UseVisualStyleBackColor = False
@@ -130,9 +122,9 @@ Partial Class FormInicio
         Me.ButtonSair.FlatAppearance.BorderSize = 0
         Me.ButtonSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonSair.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.ButtonSair.Location = New System.Drawing.Point(1080, 12)
+        Me.ButtonSair.Location = New System.Drawing.Point(870, 12)
         Me.ButtonSair.Name = "ButtonSair"
-        Me.ButtonSair.Size = New System.Drawing.Size(350, 120)
+        Me.ButtonSair.Size = New System.Drawing.Size(280, 120)
         Me.ButtonSair.TabIndex = 5
         Me.ButtonSair.Text = "Sair"
         Me.ButtonSair.UseVisualStyleBackColor = False
@@ -148,9 +140,9 @@ Partial Class FormInicio
         Me.GroupBoxDadosDoArquivo.Controls.Add(Me.LabelQtdRegistrosRef)
         Me.GroupBoxDadosDoArquivo.Controls.Add(Me.LabelQtdDuplicadosArquivoRef)
         Me.GroupBoxDadosDoArquivo.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBoxDadosDoArquivo.Location = New System.Drawing.Point(368, 138)
+        Me.GroupBoxDadosDoArquivo.Location = New System.Drawing.Point(298, 138)
         Me.GroupBoxDadosDoArquivo.Name = "GroupBoxDadosDoArquivo"
-        Me.GroupBoxDadosDoArquivo.Size = New System.Drawing.Size(1061, 139)
+        Me.GroupBoxDadosDoArquivo.Size = New System.Drawing.Size(852, 139)
         Me.GroupBoxDadosDoArquivo.TabIndex = 0
         Me.GroupBoxDadosDoArquivo.TabStop = False
         Me.GroupBoxDadosDoArquivo.Text = "Dados do Arquivo"
@@ -239,9 +231,9 @@ Partial Class FormInicio
         Me.GroupBox1.Controls.Add(Me.LabelQtdDuplicadosColetaRef)
         Me.GroupBox1.Controls.Add(Me.LabelOperadorRef)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBox1.Location = New System.Drawing.Point(368, 283)
+        Me.GroupBox1.Location = New System.Drawing.Point(298, 283)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1062, 124)
+        Me.GroupBox1.Size = New System.Drawing.Size(852, 124)
         Me.GroupBox1.TabIndex = 15
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Dados da Coleta"
@@ -250,7 +242,7 @@ Partial Class FormInicio
         '
         Me.LabelQtdErro.AutoSize = True
         Me.LabelQtdErro.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabelQtdErro.Location = New System.Drawing.Point(680, 34)
+        Me.LabelQtdErro.Location = New System.Drawing.Point(681, 61)
         Me.LabelQtdErro.Name = "LabelQtdErro"
         Me.LabelQtdErro.Size = New System.Drawing.Size(26, 31)
         Me.LabelQtdErro.TabIndex = 16
@@ -351,9 +343,9 @@ Partial Class FormInicio
         Me.GroupBoxProgressoDaColeta.BackColor = System.Drawing.Color.White
         Me.GroupBoxProgressoDaColeta.Controls.Add(Me.ProgressBarProgressoDaColeta)
         Me.GroupBoxProgressoDaColeta.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.GroupBoxProgressoDaColeta.Location = New System.Drawing.Point(374, 413)
+        Me.GroupBoxProgressoDaColeta.Location = New System.Drawing.Point(298, 413)
         Me.GroupBoxProgressoDaColeta.Name = "GroupBoxProgressoDaColeta"
-        Me.GroupBoxProgressoDaColeta.Size = New System.Drawing.Size(1056, 97)
+        Me.GroupBoxProgressoDaColeta.Size = New System.Drawing.Size(744, 97)
         Me.GroupBoxProgressoDaColeta.TabIndex = 16
         Me.GroupBoxProgressoDaColeta.TabStop = False
         Me.GroupBoxProgressoDaColeta.Text = "Progresso da Coleta"
@@ -362,7 +354,7 @@ Partial Class FormInicio
         '
         Me.ProgressBarProgressoDaColeta.Location = New System.Drawing.Point(6, 37)
         Me.ProgressBarProgressoDaColeta.Name = "ProgressBarProgressoDaColeta"
-        Me.ProgressBarProgressoDaColeta.Size = New System.Drawing.Size(1044, 44)
+        Me.ProgressBarProgressoDaColeta.Size = New System.Drawing.Size(729, 44)
         Me.ProgressBarProgressoDaColeta.Step = 1
         Me.ProgressBarProgressoDaColeta.TabIndex = 0
         '
@@ -384,22 +376,61 @@ Partial Class FormInicio
         'ButtonColetaManual
         '
         Me.ButtonColetaManual.BackColor = System.Drawing.Color.Turquoise
+        Me.ButtonColetaManual.Enabled = False
         Me.ButtonColetaManual.FlatAppearance.BorderSize = 0
         Me.ButtonColetaManual.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonColetaManual.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.ButtonColetaManual.Location = New System.Drawing.Point(12, 390)
         Me.ButtonColetaManual.Name = "ButtonColetaManual"
-        Me.ButtonColetaManual.Size = New System.Drawing.Size(350, 120)
+        Me.ButtonColetaManual.Size = New System.Drawing.Size(280, 120)
         Me.ButtonColetaManual.TabIndex = 17
         Me.ButtonColetaManual.Text = "Coleta Manual"
         Me.ButtonColetaManual.UseVisualStyleBackColor = False
+        '
+        'ButtonPendentes
+        '
+        Me.ButtonPendentes.BackColor = System.Drawing.Color.DarkTurquoise
+        Me.ButtonPendentes.Enabled = False
+        Me.ButtonPendentes.FlatAppearance.BorderSize = 0
+        Me.ButtonPendentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonPendentes.Font = New System.Drawing.Font("Segoe UI", 25.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.ButtonPendentes.Location = New System.Drawing.Point(298, 12)
+        Me.ButtonPendentes.Name = "ButtonPendentes"
+        Me.ButtonPendentes.Size = New System.Drawing.Size(280, 120)
+        Me.ButtonPendentes.TabIndex = 18
+        Me.ButtonPendentes.Text = "Pendentes"
+        Me.ButtonPendentes.UseVisualStyleBackColor = False
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.BackColor = System.Drawing.Color.White
+        Me.GroupBox2.Controls.Add(Me.Label1)
+        Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 17.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.GroupBox2.Location = New System.Drawing.Point(1048, 413)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(102, 97)
+        Me.GroupBox2.TabIndex = 17
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Versão"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 22.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(24, 37)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(73, 41)
+        Me.Label1.TabIndex = 17
+        Me.Label1.Text = "5.10"
         '
         'FormInicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1441, 522)
+        Me.ClientSize = New System.Drawing.Size(1162, 522)
         Me.ControlBox = False
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.ButtonPendentes)
         Me.Controls.Add(Me.ButtonColetaManual)
         Me.Controls.Add(Me.GroupBoxProgressoDaColeta)
         Me.Controls.Add(Me.GroupBox1)
@@ -408,7 +439,6 @@ Partial Class FormInicio
         Me.Controls.Add(Me.ButtonParar)
         Me.Controls.Add(Me.ButtonIniciar)
         Me.Controls.Add(Me.ButtonConfiguracoes)
-        Me.Controls.Add(Me.ButtonEnviarRelatorio)
         Me.Controls.Add(Me.ButtonCarregarArquivo)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximumSize = New System.Drawing.Size(1600, 1200)
@@ -419,12 +449,13 @@ Partial Class FormInicio
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBoxProgressoDaColeta.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents ButtonCarregarArquivo As Button
-    Friend WithEvents ButtonEnviarRelatorio As Button
     Friend WithEvents ButtonConfiguracoes As Button
     Friend WithEvents ButtonIniciar As Button
     Friend WithEvents ButtonParar As Button
@@ -454,4 +485,7 @@ Partial Class FormInicio
     Friend WithEvents TimerVerificarOperador As Timer
     Friend WithEvents TimerControleDeOperacao As Timer
     Friend WithEvents ButtonColetaManual As Button
+    Friend WithEvents ButtonPendentes As Button
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents Label1 As Label
 End Class

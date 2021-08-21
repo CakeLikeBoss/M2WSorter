@@ -27,7 +27,7 @@ Public Class CSVManager
         Dim values() As String
         Dim tmpstream As StreamReader = File.OpenText(path)
         strlines = tmpstream.ReadToEnd().Split(Environment.NewLine)
-        num_rows = UBound(strlines) - 1
+        num_rows = UBound(strlines)
         ReDim colSeq(num_rows)
         ReDim colCodigo(num_rows)
         ReDim colQtd(num_rows)
@@ -37,25 +37,34 @@ Public Class CSVManager
         ReDim colDate(num_rows)
         For x = 0 To num_rows
             values = strlines(x).Split(";")
-            colSeq(x) = values(0).Replace("""", "")
-            colCodigo(x) = values(1).Replace("""", "")
-            colQtd(x) = values(2).Replace("""", "")
-            colError(x) = ""
-            colOperadorName(x) = ""
-            colOperadorCode(x) = ""
-            colDate(x) = ""
+            If (values.Length > 1) Then
+                colSeq(x) = values(0).Replace("""", "")
+                colCodigo(x) = values(1).Replace("""", "")
+                colQtd(x) = ""
+                colError(x) = ""
+                colOperadorName(x) = ""
+                colOperadorCode(x) = ""
+                colDate(x) = ""
+            End If
         Next
 
     End Sub
 
     Public Function searchFileToRead(Key As String, Name As String, Code As String) As Integer
         Dim Index As Integer
-        Index = Array.IndexOf(colCodigo, Key)
+
+        Index = Array.IndexOf(colCodigo, Key.Replace(vbCr, "").Replace(vbLf, ""))
+
         If Index <> -1 Then
-            colError(Index) = "Automatic"
-            colOperadorName(Index) = Name
-            colOperadorCode(Index) = Code
-            colDate(Index) = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            If colError(Index) = "" Then
+                colError(Index) = "AUTOMATICO"
+                colOperadorName(Index) = Name
+                colOperadorCode(Index) = Code
+                colDate(Index) = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                FormInicio.totalRealizado += 1
+            Else
+                Index = -2
+            End If
         End If
 
         Return Index
@@ -63,12 +72,38 @@ Public Class CSVManager
 
     Public Function searchFileToManualRead(Key As String, Name As String, Code As String) As Integer
         Dim Index As Integer
-        Index = Array.IndexOf(colCodigo, Key)
+        Index = Array.IndexOf(colCodigo, Key.Replace(vbCr, "").Replace(vbLf, ""))
         If Index <> -1 Then
-            colError(Index) = "Automatic"
-            colOperadorName(Index) = Name
-            colOperadorCode(Index) = Code
-            colDate(Index) = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            If colError(Index) = "" Then
+                colError(Index) = "MANUAL"
+                colOperadorName(Index) = Name
+                colOperadorCode(Index) = Code
+                colDate(Index) = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+                FormInicio.totalRealizado += 1
+            Else
+                Index = -2
+            End If
+        End If
+
+        Return Index
+    End Function
+
+
+
+    Public Function searchFileToCopy(values() As String)
+        Dim Index As Integer
+        If (values(3) <> "PENDENTE") Then
+            Index = Array.IndexOf(colCodigo, values(1).Replace(vbCr, "").Replace(vbLf, ""))
+            If Index <> -1 Then
+                colSeq(Index) = values(0)
+                colCodigo(Index) = values(1)
+                colQtd(Index) = values(2)
+                colError(Index) = values(3)
+                colOperadorName(Index) = values(4)
+                colOperadorCode(Index) = values(5)
+                colDate(Index) = values(6)
+                FormInicio.totalRealizado += 1
+            End If
         End If
 
         Return Index
@@ -81,10 +116,15 @@ Public Class CSVManager
         Dim line As String
         For Index = 0 To colSeq.Length - 1
             If colError(Index) = "" Then
-                colError(Index) = "Not Found"
+                colError(Index) = "PENDENTE"
                 colOperadorName(Index) = Name
                 colOperadorCode(Index) = Code
                 colDate(Index) = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            ElseIf colSeq(Index).ToUpper() = "SEQ" Then
+                colError(Index) = "Info"
+                colOperadorName(Index) = "Name"
+                colOperadorCode(Index) = "Code"
+                colDate(Index) = "Date"
             End If
 
             line = colSeq(Index) + ";" + colCodigo(Index) + ";" + colQtd(Index) + ";" + colError(Index) + ";" + colOperadorName(Index) + ";" + colOperadorCode(Index) + ";" + colDate(Index)
@@ -124,7 +164,25 @@ Public Class CSVManager
 
     End Function
 
-
+    Public Sub verificarOperacaoAnterior(path As String)
+        If My.Computer.FileSystem.FileExists(path) Then
+            Dim num_rows As Integer
+            Dim strlines() As String
+            Dim values() As String
+            ''MessageBox.Show(path)
+            Dim tmpstream As StreamReader = File.OpenText(path)
+            strlines = tmpstream.ReadToEnd().Split(Environment.NewLine)
+            num_rows = UBound(strlines)
+            ''MessageBox.Show(strlines(0))
+            For x = 0 To num_rows
+                values = strlines(x).Split(";")
+                If (values.Length > 1) Then
+                    searchFileToCopy(values)
+                End If
+            Next
+            tmpstream.Close()
+        End If
+    End Sub
     Private Sub consoleDebug(message As String)
             Console.WriteLine("::DEBUG::")
             Console.WriteLine(message)

@@ -22,10 +22,11 @@ Public Class SerialController
         MyCOMPort = New SerialPort()
 
         MyCOMPort.PortName = porta
-        MyCOMPort.BaudRate = 9600
+        MyCOMPort.BaudRate = 19200
         MyCOMPort.Parity = Parity.None
         MyCOMPort.DataBits = 8
         MyCOMPort.StopBits = StopBits.One
+        MyCOMPort.Handshake = Handshake.None
         MyCOMPort.ReadTimeout = 5000
         MyCOMPort.WriteTimeout = 5000
     End Sub

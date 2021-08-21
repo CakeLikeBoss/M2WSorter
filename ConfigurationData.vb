@@ -46,7 +46,7 @@ Public Class ConfigurationData
                 definedUser.name = "TESTE"
                 definedUser.code = "TST"
                 coleta = New ColetaNode()
-                coleta.path = "./"
+                coleta.path = My.Computer.FileSystem.SpecialDirectories.MyDocuments
                 coleta.useLF = True
                 coleta.useCF = True
                 solenoide = New SolenoideNode()

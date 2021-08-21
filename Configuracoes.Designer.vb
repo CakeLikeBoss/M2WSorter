@@ -222,7 +222,6 @@ Partial Class Configuracoes
         '
         Me.TextBoxColetaPath.Location = New System.Drawing.Point(68, 33)
         Me.TextBoxColetaPath.Name = "TextBoxColetaPath"
-        Me.TextBoxColetaPath.ReadOnly = True
         Me.TextBoxColetaPath.Size = New System.Drawing.Size(309, 34)
         Me.TextBoxColetaPath.TabIndex = 5
         '

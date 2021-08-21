@@ -1,8 +1,9 @@
-﻿
+﻿Imports System.Net.NetworkInformation
 
 Public Class FormInicio
     Dim fileLocation As String
     Dim fileName As String
+    Dim fileOutName As String
     Dim fileQtdRegistros As Integer
     Dim fileQtdDuplicados As String
     Dim fileInfo As String
@@ -12,13 +13,38 @@ Public Class FormInicio
     Dim qtdFila As Integer
     Dim qtdDuplicadosColeta As Integer
     Dim qtdErro As Integer
-    Dim totalRealizado As Integer
+    Public Shared totalRealizado As Integer
+    Dim JaIniciado As Boolean
 
     Public Shared ConfigurationData As ConfigurationData
     Dim SerialController As SerialController
     Public Shared csvManager As CSVManager
     Private Sub ButtonSair_Click(sender As Object, e As EventArgs) Handles ButtonSair.Click
-        Close()
+        Dim relatorioEnviado As Boolean
+
+        If IsNothing(csvManager) Then
+            Close()
+            Return
+        End If
+
+        Try
+            Dim fileToExport As String
+            fileToExport = ConfigurationData.fileData.configuration.coleta.path + "\" + fileOutName
+            csvManager.finishFileToRead(ConfigurationData.fileData.configuration.definedUser.name, ConfigurationData.fileData.configuration.definedUser.code, fileToExport)
+            MessageBox.Show("Arquivo Enviado!")
+            relatorioEnviado = True
+        Catch ex As Exception
+            relatorioEnviado = False
+            MessageBox.Show(ex.ToString())
+
+        End Try
+
+        If relatorioEnviado Then
+            Close()
+        Else
+            MessageBox.Show("O Relatório não pode ser enviado. Verifique o caminho a ser enviado em configurações!")
+        End If
+
     End Sub
 
     Private Sub ButtonCarregarArquivo_Click(sender As Object, e As EventArgs) Handles ButtonCarregarArquivo.Click
@@ -33,13 +59,19 @@ Public Class FormInicio
         If fd.ShowDialog() = DialogResult.OK Then
             fileLocation = fd.FileName
             fileName = csvManager.getFileName(fileLocation)
+            fileOutName = "Coleta_" + fileName
             fileQtdRegistros = csvManager.getLineQTD(fileLocation)
-            fileQtdDuplicados = csvManager.getQTDDuplicatedLines(fileLocation)
+            fileQtdDuplicados = 0
+            ''fileQtdDuplicados = csvManager.getQTDDuplicatedLines(fileLocation)
             fileInfo = "Arquivo lido com Sucesso!"
             ShowFileInfo()
             SetDadosDoArquivo()
+            ButtonIniciar.Enabled = True
         Else
             Debug.WriteLine("Arquivo não Selecionado")
+            ButtonIniciar.Enabled = False
+            ButtonParar.Enabled = False
+            ButtonColetaManual.Enabled = False
         End If
     End Sub
 
@@ -74,12 +106,17 @@ Public Class FormInicio
 
     Private Sub FormInicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         StatusSorter = "Parada"
+        JaIniciado = False
         ConfigurationData = New ConfigurationData()
         SerialController = New SerialController()
         qtdFila = 0
         qtdDuplicadosColeta = 0
         qtdErro = 0
         totalRealizado = 0
+        If Not verificarMac() Then
+            MessageBox.Show("MAQUINA NAO AUTORIAZADA!")
+            Close()
+        End If
     End Sub
 
     Private Sub TimerVerificarOperador_Tick(sender As Object, e As EventArgs) Handles TimerVerificarOperador.Tick
@@ -94,10 +131,20 @@ Public Class FormInicio
             MessageBox.Show("O arquivo Ainda não Foi carregado!")
         ElseIf ConfigurationData.fileData.configuration.porta <> "" Then
             Try
-                csvManager.setFileToRead(fileLocation)
+                ButtonIniciar.Enabled = False
+                ButtonParar.Enabled = True
+                ButtonColetaManual.Enabled = False
+                ButtonCarregarArquivo.Enabled = False
+                ButtonPendentes.Enabled = True
+
+                If (JaIniciado = False) Then
+                    csvManager.setFileToRead(fileLocation)
+                    csvManager.verificarOperacaoAnterior(ConfigurationData.fileData.configuration.coleta.path + "\" + fileOutName)
+                    SerialController.ConfigSerialPort(ConfigurationData.fileData.configuration.porta)
+                    JaIniciado = True
+                End If
                 MessageBox.Show("Serviço Iniciado")
-                SerialController.ConfigSerialPort(ConfigurationData.fileData.configuration.porta)
-                StatusSorter = "Processar"
+                    StatusSorter = "Processar"
                 If BackgroundWorkerSerialListener.IsBusy <> True Then
                     BackgroundWorkerSerialListener.RunWorkerAsync()
                 End If
@@ -121,8 +168,12 @@ Public Class FormInicio
                     readText = SerialController.ReceiveSerialData()
                     index = csvManager.searchFileToRead(readText, ConfigurationData.fileData.configuration.definedUser.name, ConfigurationData.fileData.configuration.definedUser.code)
                     If index = -1 Then
-                        SerialController.SendSerialData(ConfigurationData.fileData.configuration.solenoide.code)
+                        'SerialController.SendSerialData(ConfigurationData.fileData.configuration.solenoide.code)
+                        qtdErro += 1
+                    ElseIf index = -2 Then
+                        qtdDuplicadosColeta += 1
                     End If
+
                     If BackgroundWorkerSerialListener.CancellationPending Then
                         e.Cancel = True
                         Exit Do
@@ -152,6 +203,9 @@ Public Class FormInicio
             End If
         End If
         MessageBox.Show("Sinal de cancelamento enviado!")
+        ButtonIniciar.Enabled = True
+        ButtonParar.Enabled = False
+        ButtonColetaManual.Enabled = True
     End Sub
 
     Private Sub TimerControleDeOperacao_Tick(sender As Object, e As EventArgs) Handles TimerControleDeOperacao.Tick
@@ -167,15 +221,37 @@ Public Class FormInicio
         LabelColetaInfo.Text = coletaInfo
     End Sub
 
-    Private Sub ButtonEnviarRelatorio_Click(sender As Object, e As EventArgs) Handles ButtonEnviarRelatorio.Click
-        Dim fileToExport As String
-        fileToExport = ConfigurationData.fileData.configuration.coleta.path + "Coleta_" + System.DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".csv"
-        csvManager.finishFileToRead(ConfigurationData.fileData.configuration.definedUser.name, ConfigurationData.fileData.configuration.definedUser.code, fileToExport)
-        MessageBox.Show("Arquivo Enviado!")
-    End Sub
-
     Private Sub ButtonColetaManual_Click(sender As Object, e As EventArgs) Handles ButtonColetaManual.Click
         Dim formColetaManual = New ColetaManual()
         formColetaManual.Show()
     End Sub
+
+    Private Function verificarMac() As Boolean
+        Dim nics() As NetworkInterface = NetworkInterface.GetAllNetworkInterfaces()
+        Dim macValue As String = nics(1).GetPhysicalAddress.ToString()
+        Dim x As Integer
+        Dim macList() As String = {
+            "B8975AFB279B",
+            "408D5CD976EC",
+            "00215C5F8D7D",
+            "002264E4F8A9"
+        }
+
+        For x = 0 To nics.Length - 1 Step 1
+            macValue = nics(x).GetPhysicalAddress.ToString()
+            If (macList.Contains(macValue)) Then
+                Return True
+            End If
+        Next
+
+        Return False
+
+    End Function
+
+    Private Sub ButtonPendentes_Click(sender As Object, e As EventArgs) Handles ButtonPendentes.Click
+        Dim FormRelatorio = New FormRelatorio()
+        FormRelatorio.Show()
+    End Sub
+
+
 End Class
