@@ -223,6 +223,7 @@ Public Class FormInicio
 
     Private Sub ButtonColetaManual_Click(sender As Object, e As EventArgs) Handles ButtonColetaManual.Click
         Dim formColetaManual = New ColetaManual()
+        Me.ButtonSair.Enabled = False
         formColetaManual.Show()
     End Sub
 
@@ -234,7 +235,8 @@ Public Class FormInicio
             "B8975AFB279B",
             "408D5CD976EC",
             "00215C5F8D7D",
-            "002264E4F8A9"
+            "002264E4F8A9",
+            "9829A6E19D79"
         }
 
         For x = 0 To nics.Length - 1 Step 1

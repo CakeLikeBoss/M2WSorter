@@ -167,6 +167,7 @@ Partial Class Configuracoes
         Me.ButtonConfiguracoesDeFabrica.TabIndex = 8
         Me.ButtonConfiguracoesDeFabrica.Text = "Configurações de Fábrica"
         Me.ButtonConfiguracoesDeFabrica.UseVisualStyleBackColor = False
+        Me.ButtonConfiguracoesDeFabrica.Enabled = False
         '
         'ButtonSalvar
         '

@@ -2,6 +2,7 @@
 
 
     Private Sub ButtonInicio_Click(sender As Object, e As EventArgs) Handles ButtonInicio.Click
+        FormInicio.ButtonSair.Enabled = True
         Me.Close()
     End Sub
 
